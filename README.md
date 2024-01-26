@@ -14,12 +14,13 @@ This project deploys a highly available MariaDB Galera Cluster on Kubernetes, en
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
+```
 
-2. Customize Configuration
+### 2. Customize Configuration
 
 Edit the values.yaml file to customize the MariaDB and Galera Cluster configurations.
 
-yaml
+```
 
 # values.yaml
 # Customize the following values according to your needs
@@ -38,28 +39,31 @@ galera:
   persistence:
     storageClass: your-storage-class
     size: 1Gi
+````
 
 3. Deploy MariaDB Cluster
 
-bash
+````
 
 helm install mariadb-galera bitnami/mariadb-galera -f values.yaml
 
+````
+
 4. Apply Services
 
-bash
+````
 
 kubectl apply -f galera-service.yaml
 kubectl apply -f galera-headless-service.yaml
+````
 
-5. Expose MariaDB Service
-
+### 5. Expose MariaDB Service
 Depending on your requirements, expose the MariaDB service using a LoadBalancer or NodePort service.
-6. Handle Client Connections
 
+### 6. Handle Client Connections
 Configure your application or clients to connect to the MariaDB service endpoint.
-7. Test High Availability
 
+### 7. Test High Availability
 Test the high availability scenario by intentionally stopping one of the MariaDB pods and ensuring automatic rerouting of clients to available nodes.
 Additional Considerations
 
@@ -69,6 +73,6 @@ Additional Considerations
 
     Backup and Restore: Implement regular backup strategies to prevent data loss.
 
-Contributing
+### Contributing
 
 Feel free to contribute to this project by creating issues or submitting pull requests.
