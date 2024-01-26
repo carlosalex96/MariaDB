@@ -1,0 +1,21 @@
+# values.yaml
+
+mariadb:
+  enabled: true
+  rootUser:
+    password: your-root-password
+  db:
+    name: your-database-name
+    user: your-db-user
+    password: your-db-password
+
+galera:
+  enabled: true
+  wsrep:
+    clusterAddress: "gcomm://mariadb-galera-0.mariadb-galera-headless,your-service-name.namespace.svc.cluster.local,mariadb-galera-2.mariadb-galera-headless.your-namespace.svc.cluster.local"
+  persistence:
+    enabled: true
+    storageClass: your-storage-class
+    accessModes:
+      - ReadWriteOnce
+    size: 1Gi
